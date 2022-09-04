@@ -1,0 +1,49 @@
+﻿@model AnimalsWebApplication.Models.Animal
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    <h1>Edit Animal Details</h1>
+    <div>
+        <a asp-action="edit" asp-controller="Edit"></a>
+        Name: @Model.Name
+        Age: @Model.Age
+        Description: @Model.Description
+        <form method="post" asp-action="Edit" asp-controller="Admin">
+            <input hidden asp-for="AnimalId"/>
+
+            <label for="Name">Name: </label>
+            <input name="Name" type="text" asp-for="Name"/>
+            <span asp-validation-for="Name"></span>
+
+            <input hidden asp-for="CategoryId"/>
+
+            <label for="Age">Age: </label>
+            <input name="Age" type="number" asp-for="Age"/>
+            <span asp-validation-for="Age"></span>
+
+            <label for="PictureSrc">PictureSrc: </label>
+            <textarea asp-for="PictureSrc" rows="9"></textarea>
+            <span asp-validation-for="PictureSrc"></span>
+
+            <label for="Description">Description: </label>
+            <textarea asp-for="Description" rows="9"></textarea>
+            <span asp-validation-for="Description"></span>
+
+            <button type="submit" > submit</button> 
+        </form>
+        
+    </div>
+    <p>
+        <a asp-action="Index">Back to Main Admin Page</a>
+    </p>
+</body>
+</html>

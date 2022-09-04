@@ -1,0 +1,44 @@
+﻿@model IEnumerable<AnimalsWebApplication.Models.Animal>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width" />
+		<title>Index</title>
+	</head>
+	<body>
+		@Html.Partial("_NavBar")
+		<div>
+			<p><a asp-action="Index" asp-controller="Catalogue">Go to to Catalogue</a></p>
+			<p><a asp-action="Index" asp-controller="Admin">Go to to Admin Page</a></p>
+
+			@*<form method="post" asp-action="Index" asp-controller="Admin">
+				
+			</form>*@
+			<p>Those are the two animals with the most comments: </p>
+	    </div>
+		
+		@foreach (var animal in Model)
+        {
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" style="height:15rem;" src="@animal.PictureSrc" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">@animal.Name</h5>
+					@if (animal.Comments != null)
+				{
+					@foreach (var Comment in animal.Comments)
+					{
+						<p>@Comment.CommentText </p>
+					}
+				}
+                    <a asp-action="Details" class="ShowMeMore" asp-route-id="@animal.AnimalId" asp-controller="Catalogue">Show Details</a>
+                </div>
+		    </div>
+		}
+	</body>
+</html>

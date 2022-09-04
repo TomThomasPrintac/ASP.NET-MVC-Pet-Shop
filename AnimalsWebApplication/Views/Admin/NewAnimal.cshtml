@@ -1,0 +1,58 @@
+﻿@model AnimalsWebApplication.Models.Animal
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>NewAnimal</title>
+</head>
+<body>
+    <div class="text-center">
+        <div>
+            <h3>Hey , Let's Adding :) </h3>
+        </div>
+        <div class="card">
+            <form class="text-center" action="/Admin/NewAnimal" method="post">
+                <label for="Name">Name: </label>
+                <input asp-for="Name"/>
+                <span asp-validation-for="Name"></span>
+
+                <label for="Age">Age: </label>
+                <input asp-for="Age"/>
+                <span asp-validation-for="Age"></span>
+
+
+                <label for="PictureSrc">PictureSrc: </label>
+                <textarea asp-for="PictureSrc" rows="9"></textarea>
+                <span asp-validation-for="PictureSrc"></span>
+
+
+                <label for="Description">Description: </label>
+                <textarea asp-for="Description" rows="9"></textarea>
+                <span asp-validation-for="Description"></span>
+
+                <select asp-for="CategoryId">
+                    <option value="-1">Category</option>
+                    @foreach (var category in ViewBag.Categories)
+                    {
+                        <option value="@category.CategoryId">@category.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="CategoryId"></span>
+
+                <input type="submit" value="Submit" /> 
+            </form>
+        </div>
+        <div>
+            <a asp-action="index" asp-controller="Admin">Back</a>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+

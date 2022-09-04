@@ -1,0 +1,35 @@
+﻿@model AnimalsWebApplication.Models.Animal
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <h1>Animal Details</h1>
+    <p>
+        Name: @Model.Name
+        Age: @Model.Age
+        Description: @Model.Description
+        <form method="post" asp-action="Comment" asp-controller="Catalogue">
+        <input name="id" type="hidden"  value="@Model.AnimalId"/>
+        <input name="commentText" type="text" class="form-control" placeholder="Add you comments here and press submit" aria-label="" aria-describedby="basic-addon1">
+        <button type="submit"> Submit</button>
+        </form>
+        @foreach (var Comment in @Model.Comments!)
+			{
+				<div> <p>@Comment.CommentText </p> </div>
+			}
+    </p>
+    <p>
+        <a asp-action="Index">Back to Catalogue</a>
+    </p>
+</body>
+</html>

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<AnimalsWebApplication.Models.Animal>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width" />
+		<title>Index</title>
+	</head>
+	<body>
+		@Html.Partial("_NavBar")
+		<h1>Animals from database</h1>
+		<div>
+			<form action="/Catalogue/Index" method="post">
+            <fieldset>
+                <select id="Category" name="Category" class="form-select" aria-label="Default select example">
+
+                    <option value="Birds">Birds</option>
+
+                    <option value="Mammal">Mammals</option>
+
+                    <option value="Fish">Fishes</option>
+
+                    <option value="Amphibians">Amphibians</option>
+
+                    <option value="reptiles">reptiles</option>
+
+                </select>
+                <p><input type="submit" value="Submit" /> </p>
+            </fieldset>
+            </form>
+		</div>
+		@foreach (var animal in Model)
+        {
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" style="height:15rem;" src="@animal.PictureSrc" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">@animal.Name</h5>
+					@if (animal.Comments != null)
+				    {
+						@foreach (var Comment in animal.Comments)
+			        {
+				         <p>@Comment.CommentText </p>
+					}
+				    }
+                    <a asp-action="Details" class="ShowMeMore" asp-route-id="@animal.AnimalId" asp-controller="Catalogue">Show Details</a>
+                </div>
+		    </div>
+		}
+	</body>
+</html>

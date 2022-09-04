@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "ijP1syKdCZCcLxSy+H85Vm5m5L9YI+E6/kzrJsSGdIc=",
+  "Source": "AnimalsWebApplication",
+  "BasePath": "_content/AnimalsWebApplication",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "AnimalsWebApplication\\wwwroot",
+      "Source": "AnimalsWebApplication",
+      "ContentRoot": "C:\\Users\\Tom Thomas Printac\\Desktop\\S.D Course Sela\\.NET Framework\\ASP .NET\\AnimalsWebApplication\\AnimalsWebApplication\\wwwroot\\",
+      "BasePath": "_content/AnimalsWebApplication",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}
